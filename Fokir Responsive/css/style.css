@@ -1,0 +1,931 @@
+/* Start Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  margin: 0 0 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #333;
+}
+body,
+html {
+  scroll-behavior: smooth;
+}
+body {
+  color: #555555;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+}
+a {
+  text-decoration: none;
+  color: #555555;
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.clr {
+  clear: both;
+}
+/* End Global Styles */
+
+/* Start Heading Section */
+.heading-section {
+  /* 1- repeat , 2- postion 3- size ...  The / before cover is part of a shorthand syntax for setting both the background-position and background-size in a single declaration. */
+  background: url(../images/header.jpeg) no-repeat center center / cover;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+.heading-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.logo {
+  float: left;
+  padding: 18px 0px;
+}
+
+.logo a {
+  color: #ff305b;
+  font-size: 26px;
+  font-weight: 800;
+}
+.links {
+  float: right;
+}
+.links li {
+  float: left;
+  margin-right: 15px;
+  padding: 18px 0;
+}
+
+.links li:first-child span {
+  color: rgb(255, 48, 91);
+}
+
+.links li span {
+  color: white;
+  transition: color 0.4s;
+}
+
+.links li span:hover {
+  color: rgb(255, 48, 91);
+}
+
+.links li a span {
+  font-weight: 300;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* Use position with translate to be more responsive */
+.heading-content {
+  text-align: center;
+  transform: translate(0, -50%);
+  position: absolute;
+  width: 100%;
+  top: 50%;
+}
+
+.nav {
+  width: 100%;
+  height: fit-content;
+  position: absolute;
+  background-color: #fff;
+  overflow: hidden;
+  right: 0;
+  z-index: 4;
+}
+
+.menu a {
+  display: block;
+  padding: 20px;
+  color: #000;
+}
+.menu a:hover {
+  background-color: #a2a2a298;
+}
+.nav {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+}
+
+.nav .menu {
+  margin-block-start: 41px;
+}
+
+/* Menu Icon */
+.hamb {
+  cursor: pointer;
+  float: right;
+  padding: 30px 20px;
+}
+
+.hamb-line {
+  background: #fff;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+}
+
+.hamb-line::before,
+.hamb-line::after {
+  background: #fff;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+  z-index: 5;
+}
+
+.hamb-line::before {
+  top: 5px;
+}
+.hamb-line::after {
+  top: -5px;
+}
+
+.side-menu {
+  display: none;
+}
+
+.side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top: 0;
+  background: black;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top: 0;
+  background: black;
+}
+
+.side-menu:checked ~ .nav {
+  max-height: 100%;
+}
+
+.heading-content h1 {
+  margin-block: 40px;
+  color: #ff305b;
+  font-size: 70px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.heading-content h3 {
+  color: white;
+  font-size: 26px;
+}
+
+.heading-content p {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: Roboto, sans-serif;
+  text-transform: capitalize;
+  color: rgb(255, 255, 255);
+}
+
+/* End Heading Section */
+
+/* Start Intro Section */
+
+.intro-section {
+  padding-block: 100px;
+}
+
+.intro-img {
+  float: left;
+  position: relative;
+  margin-inline-start: 150px;
+  transform: translateY(24px) translateX(24px);
+}
+
+.intro-img img {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+}
+
+/* For Image Outside Border */
+.intro-img .img::before {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  width: 97%;
+  height: 97%;
+  border: 10px solid #555555;
+  border-radius: 5px;
+  z-index: -1;
+}
+
+/* Start Layer Over The Image */
+.img-overly {
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  position: absolute;
+  bottom: 8px;
+  height: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease 0s;
+}
+
+/* visibility vs display  */
+.intro-img .img:hover .img-overly {
+  border-radius: 5px;
+  height: 98.5%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.social-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /*translate that i use to move the element*/
+}
+
+.social-icon li {
+  display: inline-block;
+}
+
+.social-icon li a {
+  display: block;
+  font-size: 20px;
+  height: 20px;
+  width: 32px;
+  color: #fff;
+  transition: color 0.1s ease 0s;
+}
+
+.social-icon li a:hover {
+  color: #ff305b;
+}
+
+/* end Layer Over The Image */
+
+.intro-content {
+  float: right;
+  width: 100%;
+  position: relative;
+}
+.intro-content h2 {
+  font-size: 34px;
+  text-transform: uppercase;
+  padding-inline-start: 15px;
+  margin-top: 15px;
+}
+
+.intro-content h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 12px;
+  margin-top: 15px;
+  border-left: 4px solid #ff305b;
+}
+.intro-content p {
+  border-bottom: 1px dashed #999999;
+  margin-bottom: 25px;
+  padding-block: 15px;
+}
+
+.intro-content .list li {
+  float: left;
+  width: 100%;
+  color: #555555;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.intro-content span {
+  color: #333333;
+  font-weight: 500;
+}
+
+.intro-section .btn {
+  font-size: 17px;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+  border: 0;
+  background-color: #ff305b;
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 12px 26px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.intro-section .btn:hover {
+  background-color: #ec2403;
+}
+
+.intro-section .btn i {
+  padding-inline-start: 6px;
+  font-size: 14px;
+}
+/* End Intro Section */
+
+/* Start Our Services */
+.our-services-section {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.services-wrapper {
+  padding-block: 80px;
+  position: relative;
+}
+.services-wrapper h2 {
+  color: #333333;
+  font-size: 40px;
+  font-weight: 700;
+  margin-block-end: 26px;
+}
+/* Start 3 Lines  Underline */
+.heading {
+  width: 90px;
+  height: 16px;
+  margin: auto;
+  border-top: 1px solid #ff305b;
+  border-bottom: 1px solid #ff305b;
+  position: relative;
+}
+.heading::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  background-color: #ff305b;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+/* End 3 Lines  Underline */
+
+.type {
+  margin-top: 50px;
+  float: left;
+  width: 25%;
+  padding: 35px;
+  transition: all 0.3s ease-in-out;
+}
+
+.type i {
+  font-size: 40px;
+  color: #ff305b;
+  padding-block-end: 20px;
+  transition: all 0.3s ease-in-out 0s; /* add here to make transtion on hover and when get the mouse away */
+}
+
+.type h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+.type p {
+  padding-inline: 20px;
+}
+
+.type:hover {
+  background-color: #ffffff;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.type:hover i {
+  transform: scale(1.2); /* like an animation type */
+}
+/* End Our Services */
+
+/* Start Portfolio Section */
+.protfolio-section {
+  text-align: center;
+  padding-block: 80px;
+  position: relative;
+}
+
+.protfolio-section h2 {
+  color: #333333;
+  font-size: 40px;
+  font-weight: 700;
+  margin-block-end: 26px;
+}
+.portfolio-images {
+  margin-block-start: 50px;
+}
+.portfolio-images .img {
+  float: left;
+  width: 100%;
+  position: relative;
+  height: auto;
+  line-height: 0;
+  margin-block: 10px;
+}
+
+.portfolio-images .img img {
+  width: 100%;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.img:hover .layer {
+  opacity: 1;
+}
+.img .layer i {
+  color: #ff305b;
+  font-size: 18px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* End Portfolio Section */
+
+/* Start Numbers Section */
+.numbers-section {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.number {
+  margin-top: 50px;
+  float: left;
+  width: 100%;
+  padding: 35px;
+}
+
+.number i {
+  font-size: 30px;
+  color: #ff305b;
+  padding-block-end: 20px;
+}
+
+.number h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+.number p {
+  padding-inline: 20px;
+}
+
+/* End Numbers Section */
+
+/* Start Client Section */
+.client-section {
+  padding-block: 80px;
+  position: relative;
+}
+
+.client-section h2 {
+  text-align: center;
+  color: #333333;
+  font-size: 40px;
+  font-weight: 700;
+  margin-block-end: 26px;
+}
+
+.card {
+  padding: 39px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  margin-block-start: 100px;
+  /* width: 65%; */
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Ensure that the triangle doesn't overflow the card */
+  z-index: 1;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  border-left: 100px solid #ff305b;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-top: 100px solid #ff305b; /* Color of the triangle */
+}
+.card .card-img {
+  float: left;
+}
+
+.card .card-img img {
+  border-radius: 50%;
+  width: 80%;
+}
+
+.card .card-content {
+  float: left;
+  /* width: 70%; */
+  width: 100%;
+}
+
+.card .card-content h3 {
+  color: #333;
+  font-size: 26px;
+}
+
+.card .card-content h4 {
+  color: #777;
+  font-size: 15px;
+}
+
+.card .card-content p {
+  color: #555;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.card-content .stars {
+  margin-top: 10px;
+  color: #f1c30d;
+  font-size: 14px;
+}
+
+.client-dots {
+  position: relative;
+}
+
+.dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-radius: 10px;
+  padding: 4px 12px;
+  width: 10px;
+  height: 10px;
+  margin-inline-end: 20px;
+  transform: translate(-50%, 150%);
+  background-color: #ff305b;
+}
+.dots::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-inline-start: 20px;
+  border: 1px solid #ff305b;
+}
+/* End Client Section */
+
+/* Start Our Blogs Section */
+.blogs-section {
+  background-color: #f1f1f1;
+  position: relative;
+  padding-block: 80px;
+}
+.blogs-wrapper h2 {
+  text-align: center;
+  color: #333333;
+  font-size: 40px;
+  font-weight: 700;
+  margin-block-end: 26px;
+}
+.blogs-cards {
+  margin-block-start: 35px;
+}
+
+.blog {
+  padding: 15px;
+  float: left;
+  /* width: 33.33%; */
+  width: 100%;
+}
+.blog-inner {
+  background-color: white;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+}
+.blog img {
+  width: 100%;
+}
+.iframe {
+  position: relative;
+  width: 100%;
+  padding-bottom: 58.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+  height: 0; /* Ensures the height is calculated from the padding */
+  overflow: hidden; /* Prevents the content from overflowing */
+}
+
+.blog-img iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0; /* Removes the border */
+}
+.blog-content {
+  padding-inline: 30px;
+}
+
+.blog-content p {
+  margin-block: 15px;
+  color: #555;
+  font-size: 16px;
+}
+
+.blog-content h3 {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-content h3:hover {
+  color: #ff305b;
+}
+
+.blog-content .btn {
+  padding-bottom: 10px;
+}
+
+.blog-content .btn a {
+  color: #333;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-content .btn a:hover {
+  color: #ff305b;
+  text-decoration: underline;
+}
+/* End Our Blogs Section */
+
+/* Start Contact Us Section */
+.contact-section {
+  padding-block: 80px;
+  position: relative;
+}
+.contact-section h2 {
+  text-align: center;
+  color: #333333;
+  font-size: 40px;
+  font-weight: 700;
+  margin-block-end: 26px;
+}
+
+.form-container {
+  /* width: 60%; */
+  width: 100%;
+  margin: 35px auto 0;
+}
+.form-container div:not(.clr) {
+  padding: 10px;
+}
+.input {
+  float: left;
+  /* width: 50%; */
+  width: 100%;
+}
+.input input,
+textarea,
+.input-subject input {
+  padding: 20px;
+  height: 35px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.input-textarea textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+}
+
+.input input:focus,
+.input-textarea textarea:focus,
+.input-subject input:focus {
+  outline: none;
+  border: 1px solid #ff305b;
+}
+.contact-section button {
+  background-color: #ff305b;
+  border-color: transparent;
+  color: #ffffff;
+  opacity: 1;
+  padding: 0 20px;
+  height: 40px;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.contact-section button:hover {
+  background: #ec2403;
+}
+
+/* End Contact Us Section */
+
+/* Start Footer Section */
+
+.footer-section {
+  background-color: #333;
+  text-align: center;
+  padding-block: 50px;
+}
+
+.footer-section .social-media a {
+  text-decoration: none;
+}
+.footer-section .social-media i {
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 17px;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-section .social-media i:hover {
+  color: #ff305b;
+}
+
+.footer-section p {
+  padding-block-start: 5px;
+  color: white;
+}
+.footer-section p span {
+  color: #ff305b;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-in;
+}
+.footer-section p span:hover {
+  border-color: #ff305b;
+}
+/* End Footer Section */
+
+/* Typewriter effect */
+@keyframes typing {
+  0%,
+  50% {
+    content: "";
+  }
+  1%,
+  49% {
+    content: "d";
+  }
+  2%,
+  48% {
+    content: "de";
+  }
+  3%,
+  47% {
+    content: "des";
+  }
+  4%,
+  46% {
+    content: "desi";
+  }
+  5%,
+  45% {
+    content: "desig";
+  }
+  6%,
+  44% {
+    content: "designe";
+  }
+  7%,
+  43% {
+    content: "designer";
+  }
+
+  50%,
+  100% {
+    content: "";
+  }
+  51%,
+  99% {
+    content: "d";
+  }
+  52%,
+  98% {
+    content: "de";
+  }
+  53%,
+  97% {
+    content: "dev";
+  }
+  54%,
+  96% {
+    content: "deve";
+  }
+  55%,
+  95% {
+    content: "devel";
+  }
+  56%,
+  94% {
+    content: "develo";
+  }
+  57%,
+  93% {
+    content: "develop";
+  }
+  58%,
+  92% {
+    content: "develope";
+  }
+  59%,
+  91% {
+    content: "developer";
+  }
+}
+
+.typewriter {
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 10s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: fadeIn 0.5s ease-in-out infinite;
+}
+
+/* prefers-reduced-motion: This is a media feature that detects if 
+the user has set a preference to reduce animations on their device 
+(e.g., for accessibility or health reasons like motion sickness). */
+
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
+  }
+
+  @keyframes sequencePopup {
+    0%,
+    100% {
+      content: "developer";
+    }
+    50%,
+    100% {
+      content: "designer";
+    }
+  }
+
+  .typewriter::before {
+    content: "developer";
+    animation: fadeIn 12s linear infinite;
+  }
+}
+
+
